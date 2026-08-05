@@ -105,3 +105,30 @@ select dept,count(*) from emp group by dept;
 select gender,count(*) from emp group by gender;
 select dept,sum(salary) from emp group by dept;
 select dept,truncate(avg(age),0) from emp group by dept;
+use employee;
+select distinct dept,gender from emp;
+select distinct age from emp;
+select distinct gender from emp;
+select* from emp where age not in (23,28);
+select* from emp where age in (23,28);
+select* from emp where salary between 40000 and 60000;
+select* from emp where age between 25 and 28;
+select* from emp where age=25;
+select* from emp where employeeid in (1003,1004,1007,1010);
+select * from emp where fullname like"P%";
+select * from emp where fullname like"%Y";
+select * from emp where fullname like"%I%";
+select * from emp where fullname like"_I%";
+select * from emp where fullname like "%N__";
+select * from emp where fullname NOT like"P%";
+SELECT*FROM Projects WHERE Projectname is not NULL;
+select*from emp limit 5;
+select*from emp order by age;
+select DEPT, COUNT(*) FROM EMP
+GROUP BY DEPT HAVING  COUNT(*)>3;
+Select city,count(*) from address group by city having count(*)>1;
+SELECT DATEDIFF(ENDDATE,STARTDATE) AS DUARATION FROM Projects;
+SELECT DATEDIFF(ENDDATE,STARTDATE) AS DURATION, COUNT(*) FROM Projects
+where employeeid>1004
+group by datediff(enddate,startdate) having count(*)>=2;
+select*from Projects;
