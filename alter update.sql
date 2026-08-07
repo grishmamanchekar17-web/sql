@@ -132,3 +132,33 @@ SELECT DATEDIFF(ENDDATE,STARTDATE) AS DURATION, COUNT(*) FROM Projects
 where employeeid>1004
 group by datediff(enddate,startdate) having count(*)>=2;
 select*from Projects;
+use employee;
+create table voter_list
+(Voter_id int ,
+Names varchar(30),
+Age int check(Age>=18) );
+desc voter_list;
+select*from voter_list;
+insert into voter_list values
+(20067,"Anuja Patil",18);
+select * from projects where employeeid is null;
+create table voter_list2
+(Voter_id int ,
+Names varchar(30),
+Age int check(Age>=18),
+email_id varchar(30) default "dummy@gmail.com");
+select*from voter_list2;
+insert into voter_list2 values
+(20067, "Anuja Patil", 18,"anujap@gmail.com"),
+(20068,"Kamlesh Joshi",44,default);
+show tables;
+select* ,concat(fullname,"-",employeeid) as Specific_code from emp;
+select fullname, lower(fullname) from emp;
+select fullname,replace(fullname,"Mohanty","Kulkarni") as New_Name from emp;
+update emp set fullname="Sambit Kulkarni" where employeeid=1008;
+update emp set fullname="Anurag Kulkarni" where employeeid=1006;
+select *from emp;
+select fullname,length(fullname) from emp where employeeid=1008;
+select substring("Mary Smith",2,3);
+select fullname,substring(fullname,2,3) as partiall,
+ length(substring(fullname, 2,3)) as length from emp;
