@@ -200,3 +200,24 @@ SELECT DATEDIFF(now(),"2006-01-17") as days;
 select avg(salary) from emp where dept="IT";
 select count(dept)from emp;
 select count(salary) from emp where gender="male";
+use employee;
+select emp.employeeid,fullname,city from emp 
+left join
+address
+on emp.employeeid=address.employeeid;
+select Projects.employeeid,projectname,state from Projects
+left join 
+address
+on projects.employeeid=address.employeeid;
+desc Projects;
+select emp.employeeid,fullname,projectname,datediff(enddate,startdate) as duration from emp
+left join 
+projects
+on emp.employeeid=projects.employeeid;
+select fullname,projectname,state from emp as E
+left join
+Projects as P
+on E.employeeid=P.employeeid
+left join
+address as A 
+on A.employeeid=E.employeeid;
