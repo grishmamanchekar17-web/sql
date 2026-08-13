@@ -200,6 +200,7 @@ SELECT DATEDIFF(now(),"2006-01-17") as days;
 select avg(salary) from emp where dept="IT";
 select count(dept)from emp;
 select count(salary) from emp where gender="male";
+--join
 use employee;
 select emp.employeeid,fullname,city from emp 
 left join
@@ -247,3 +248,21 @@ where datediff(enddate,startdate)=(select datediff(enddate,startdate)from projec
 select fullname,salary from emp where
 salary=(select max(salary) from emp 
 where salary<(select max(salary) from emp));
+use employee;
+select * from emp;
+select salary from emp where fullname="james brown" or fullname="John Doe";
+select fullname,salary from emp
+where salary in (
+select salary from emp where fullname="james brown" or fullname="John Doe")
+and fullname not in ("James brown","john doe");
+select * from emp where age< any (select age from emp where fullname in ("anurag kulkarni","mary smith"));
+select*from emp where age<(select age from emp where fullname="Anurag kulkarni")
+or
+age<(select age from emp where fullname="mary smith");
+select * from emp where age< all (select age from emp where fullname in ("anurag kulkarni","mary smith"));
+select*from emp where age<(select age from emp where fullname="Anurag kulkarni")
+and
+age<(select age from emp where fullname="mary smith")
+
+
+
