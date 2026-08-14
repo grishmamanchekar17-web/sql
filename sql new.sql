@@ -262,7 +262,16 @@ age<(select age from emp where fullname="mary smith");
 select * from emp where age< all (select age from emp where fullname in ("anurag kulkarni","mary smith"));
 select*from emp where age<(select age from emp where fullname="Anurag kulkarni")
 and
-age<(select age from emp where fullname="mary smith")
-
-
+age<(select age from emp where fullname="mary smith");
+use employee;
+alter table emp modify column Dept varchar (37);
+desc emp;
+update emp set salary=salary+10000;
+select*from emp;
+create view my_join as
+select e.employeeid,fullname,ProjectName from emp AS E
+left join Projects AS P
+on e.employeeid=P.employeeid;
+select*from projects;
+select*from my_join;
 
