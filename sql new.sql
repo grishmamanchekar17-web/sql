@@ -200,7 +200,7 @@ SELECT DATEDIFF(now(),"2006-01-17") as days;
 select avg(salary) from emp where dept="IT";
 select count(dept)from emp;
 select count(salary) from emp where gender="male";
---join
+-- join
 use employee;
 select emp.employeeid,fullname,city from emp 
 left join
@@ -268,10 +268,62 @@ alter table emp modify column Dept varchar (37);
 desc emp;
 update emp set salary=salary+10000;
 select*from emp;
-create view my_join as
+--- -VIEW 
 select e.employeeid,fullname,ProjectName from emp AS E
 left join Projects AS P
 on e.employeeid=P.employeeid;
 select*from projects;
 select*from my_join;
+use employee;
+select employeeid,fullname,
+case
+when age>26 then "Senior"
+else "Junior"
+end as Seniority from emp;
+
+select employeeid,fullname,
+CASE
+when salary>60000 then "highly_paid"
+else"under_paid"
+end as salary_remark from emp;
+sELECT*FROM EMP;
+-- --CASE 
+update emp set salary=CASE DEPT
+WHEN "IT" then salary +(salary*0.5)
+when "HR" then salary+(salary*0.4)
+else salary +(salary*0.3)
+end;
+CREATE DATABASE DB_FK;
+USE DB_FK;
+CREATE TABLE Employee (
+    ID INT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Age INT
+);
+CREATE TABLE projects (
+    Project_ID INT PRIMARY KEY,
+    Project_Name VARCHAR(100) NOT NULL,
+    Employee_ID INT,
+-- Defining Foreign Key and Cascading Behavior 
+FOREIGN KEY (Employee_ID) 
+REFERENCES Employee(ID) 
+ON UPDATE CASCADE 
+ON DELETE CASCADE ); 
+insert into employee values
+(101,"siddhi",22),
+(102,"anish",201);
+INSERT INTO projects (Project_ID, Project_Name, Employee_ID) VALUES
+(1, 'Website Redesign', 101),
+(2, 'Cloud Migration', 101),
+(3, 'Mobile App', 102);
+select *from employee;
+select*from projects;
+delete from employee where id=101;
+update employee set id =103 where id=102;
+
+
+
+
+
+
 
