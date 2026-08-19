@@ -320,6 +320,7 @@ select *from employee;
 select*from projects;
 delete from employee where id=101;
 update employee set id =103 where id=102;
+use employee;
 
 
 
