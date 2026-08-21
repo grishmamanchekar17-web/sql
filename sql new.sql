@@ -321,6 +321,37 @@ select*from projects;
 delete from employee where id=101;
 update employee set id =103 where id=102;
 use employee;
+select employeeid,fullname,dept,gender,salary,
+row_number() over (partition by gender)
+as RankInDepartment
+from emp;
+select employeeid,fullname,dept,gender,salary,
+rank() over (order by salary desc) as RankInDepartment
+from emp;
+select employeeid,fullname,dept,gender,salary,
+dense_rank() over (order by salary desc) as RankInDepartment
+from emp;
+select employeeid,fullname,dept,gender,salary,
+sum(salary) over (partition by dept) as 
+dept_wise_totalsalary
+from emp;
+select fullname,dept,salary,max(salary) over (partition by dept) as departmentaveragesalary
+from emp
+where salary <(select max(salary)from emp);
+select fullname, dept,
+count(*) over (partition by dept) as dept_count from emp;
+select employeeid,fullname,dept,age,salary,
+lag(salary,1) over (order by employeeid) as 1st_youngers_sal,
+(salary-lag(salary,1) over (order by employeeid))as difference from emp;
+select employeeid,fullname,dept,age,salary,
+lead(salary,1) over (order by employeeid) as 1st_youngers_sal from emp;
+
+ select employeeid,fullname,dept,gender,salary,age,
+avg(age) over (partition by dept) as 
+dept_wise_age
+from emp;
+
+
 
 
 
