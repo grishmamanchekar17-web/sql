@@ -350,6 +350,7 @@ lead(salary,1) over (order by employeeid) as 1st_youngers_sal from emp;
 avg(age) over (partition by dept) as 
 dept_wise_age
 from emp;
+use  employee;
 
 
 
